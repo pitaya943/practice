@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/screens/new_bulletin.dart';
+import 'package:practice/screens/search_flow_meter.dart';
 
 import 'detail_bulletin.dart';
 
@@ -16,15 +17,12 @@ class BulletinView extends StatefulWidget {
 }
 
 class _BulletinViewState extends State<BulletinView> {
-  late List itemsTitle = [];
-  late List itemsDate = [];
-  late List itemsId = [];
   bool isAdmin = false;
   bool isLoading = true;
 
   @override
   void initState() {
-    // getBulletin();
+    getAccess();
     super.initState();
   }
 
@@ -63,6 +61,18 @@ class _BulletinViewState extends State<BulletinView> {
                               builder: (builder) => NewBulletin()));
                     },
                   )
+                : null,
+          ),
+          trailing: GestureDetector(
+            child: isAdmin
+                ? TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (builder) => SearchPage()));
+                    },
+                    child: Icon(CupertinoIcons.book))
                 : null,
           ),
         ),
@@ -104,7 +114,6 @@ class _BulletinViewState extends State<BulletinView> {
                 ),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  print("presssssssssd");
                   Navigator.push(
                       context,
                       CupertinoPageRoute(

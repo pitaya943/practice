@@ -1,26 +1,25 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_if_null_operators
 
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:practice/screens/upload_image.dart';
+import 'package:practice/screens/take_meter_new.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QRScanPage extends StatefulWidget {
-  const QRScanPage({Key? key}) : super(key: key);
+class QRScanPageForMeter extends StatefulWidget {
+  const QRScanPageForMeter({Key? key}) : super(key: key);
 
   @override
-  _QRScanPageState createState() => _QRScanPageState();
+  _QRScanPageForMeterState createState() => _QRScanPageForMeterState();
 }
 
-class _QRScanPageState extends State<QRScanPage> {
+class _QRScanPageForMeterState extends State<QRScanPageForMeter> {
   final qrkey = GlobalKey(debugLabel: "QR");
 
   Barcode? barcode;
   QRViewController? controller;
   bool isBarcodeCreated = false;
-  var showAddress = "";
 
   @override
   void initState() {
@@ -59,7 +58,7 @@ class _QRScanPageState extends State<QRScanPage> {
             buildQrView(context),
             Positioned(bottom: 10, child: buildResult()),
             isBarcodeCreated
-                ? UploadImage(address: barcode!.code)
+                ? TakeMeterNew(number: barcode!.code)
                 : Container(),
           ],
         ),
@@ -82,7 +81,7 @@ class _QRScanPageState extends State<QRScanPage> {
                 width: 250,
                 child: Center(
                   child: Text(
-                    barcode != null ? barcode!.code.toString() : "請掃描地址QRcode",
+                    barcode != null ? barcode!.code.toString() : "請掃描水表QRcode",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                     maxLines: 3,
                   ),
@@ -127,7 +126,7 @@ class _QRScanPageState extends State<QRScanPage> {
         context: context,
         builder: (BuildContext context) => CupertinoAlertDialog(
               title: Text("錯誤"),
-              content: Text("請掃描地址QRcode"),
+              content: Text("請掃描水表QRcode"),
               actions: <CupertinoDialogAction>[
                 CupertinoDialogAction(
                   child: Text("確定"),

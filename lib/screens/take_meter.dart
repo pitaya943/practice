@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:practice/screens/flow_meter_check.dart';
 
 class TakeMeter extends StatefulWidget {
   const TakeMeter({Key? key}) : super(key: key);
@@ -126,8 +127,6 @@ class _TakeMeterState extends State<TakeMeter> {
     var _num = int.parse(_textStart.text);
 
     for (var i = _loop; i >= 0; i--, _num++) {
-      print("$_index$_num");
-
       final snapShot = await FirebaseFirestore.instance
           .collection('waterMeter')
           .doc("$_index$_num")
@@ -221,6 +220,19 @@ class _TakeMeterState extends State<TakeMeter> {
       resizeToAvoidBottomInset: false,
       navigationBar: CupertinoNavigationBar(
         middle: Text("領表登記"),
+        leading: GestureDetector(
+          onTap: () {},
+          child: TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => FlowMeterCheck()));
+              },
+              child: Text(
+                '查看',
+                style:
+                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+              )),
+        ),
         trailing: GestureDetector(
           onTap: () {},
           child: TextButton(
