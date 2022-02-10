@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+// import 'package:http/http.dart' as http;
 import 'dart:async';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,23 @@ class CheckIn extends StatelessWidget {
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        // leading: TextButton(
+        //     child: Text(
+        //       "Export",
+        //     ),
+        //     onPressed: () async {
+        //       String apiEndpoint =
+        //           'https://us-central1-flutterpractice-96706.cloudfunctions.net/sendMail?dest=s88416948@gmail.com';
+        //       final Uri url = Uri.parse(apiEndpoint);
+        //       var res = await http.get(url);
+
+        //       if (res.statusCode == 200) {
+        //         _showDialogOfCheck(context, "E-mail發送成功", "成功寄出");
+        //       } else {
+        //         throw Exception('Failed to send e-mail');
+        //       }
+        //       print(res.body);
+        //     }),
         middle: Text("員工簽到"),
       ),
       child: ListView(
@@ -52,6 +70,23 @@ class CheckIn extends StatelessWidget {
     );
   }
 }
+
+// _showDialogOfCheck(BuildContext context, String content, String title) {
+//   showCupertinoDialog<void>(
+//       context: context,
+//       builder: (BuildContext context) => CupertinoAlertDialog(
+//             title: Text(title),
+//             content: Text(content),
+//             actions: <CupertinoDialogAction>[
+//               CupertinoDialogAction(
+//                 child: Text("確定"),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                 },
+//               ),
+//             ],
+//           ));
+// }
 
 class Stream extends StatefulWidget {
   const Stream({Key? key}) : super(key: key);

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:practice/screens/bulletin.dart';
+import 'package:practice/screens/export_csv_to_email.dart';
 import 'package:practice/screens/qr_flow_meter.dart';
 import 'package:practice/screens/take_meter.dart';
 import 'package:practice/screens/check_in.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
     TakeMeter(),
     QRScanPageForMeter(),
     BulletinView(),
+    AdminPage()
   ];
 
   @override
@@ -42,6 +44,10 @@ class HomePage extends StatelessWidget {
             BottomNavigationBarItem(
               label: "公告",
               icon: Icon(CupertinoIcons.book_circle_fill),
+            ),
+            BottomNavigationBarItem(
+              label: "E-mail",
+              icon: Icon(CupertinoIcons.mail),
             ),
           ],
         ),
